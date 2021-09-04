@@ -7,17 +7,88 @@
 <div class="grid">
     <div class="col-12 md:col-6">    
     <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+       <p>
         Saludos {{nombre}}, es un placer 
         {{genero | i18nSelect:invitacionMap }} 
         a nuestro evento
+        </p>
+        <button pButton label="Cambiar Persona" 
+            class="p-button-success"
+            icon="pi pi-replay"
+            (click)="cambiarPersona()">
+                
+        </button>
     </p-fieldset>
     </div>
+
+
     <div class="col-12 md:col-6">    
     <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+       <p> Actualmente {{clientes.length | i18nPlural:clientesMap}}</p>
+
+       
+       <button pButton label="Pop cliente" 
+       class="p-button-warning"
+       icon="pi pi-user-minus"
+       (click)="popLast()">
+           
+   </button>
     </p-fieldset>
     </div>
+
+    <div class="col-12 md:col-6">    
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+           
+            <h2>Original</h2>
+            <p>{{clientes}}</p>
+            
+            <hr>
+            <h3>Slice:0:3</h3>
+            <p>{{ clientes | slice:0:3 }}</p>
+
+            <h3>Slice:1:4</h3>
+            <p>{{ clientes | slice:1:4 }}</p>
+
+            
+            <h3>Slice:3:4</h3>
+            <p>{{ clientes | slice:3:4 }}</p>
+
+               
+        </p-fieldset>
+    </div>
+
+
+    <div class="col-12 md:col-6">    
+        <p-fieldset legend="Key Value Pipe" [toggleable]="true">
+           <h3>
+            Persona
+           </h3>
+            {{persona | json }}
+
+            <ul>
+                <li *ngFor="let item of persona | keyvalue">
+                    <b>{{item.key}}</b>: {{item.value}}
+                </li>
+            </ul>
+
+               
+        </p-fieldset>
+    </div>
+    <div class="col-12 md:col-6">    
+        <p-fieldset legend="JSON Pipe" [toggleable]="true">
+           <pre>{{persona | json }}</pre>            
+        </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">    
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+           <pre>{{myObservable | async }}</pre>            
+           
+           <pre *ngIf="!(valorPromesa | async)">resolviendo promesa</pre>            
+           <pre>{{valorPromesa | async }}</pre>            
+        </p-fieldset>
+    </div>
+
+
+
 </div>
