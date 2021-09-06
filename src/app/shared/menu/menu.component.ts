@@ -36,12 +36,12 @@ export class MenuComponent implements OnInit {
             icon: 'pi pi-globe',
             routerLink: 'no-comunes'
           },
-         
+                   
         ]        
       }, {
         label:'Pipes personalizados',
         icon: 'pi pi-cog',
-        routerLink: 'no-comunes'
+        routerLink: 'ordenar'
       },
   ];
   }
